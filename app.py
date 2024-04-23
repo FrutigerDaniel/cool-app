@@ -11,14 +11,13 @@ def send_message(chat_id, text):
     return response.json()
 
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    message_sent = False
     if request.method == 'POST':
         chat_id = request.form['chat_id']
         text = request.form['text']
         send_message(chat_id, text)
-        return 'Сообщение отправлено!'
-    return render_template('index.html')
-
-if __name__ == '__main__':
-    app.run(debug=True)
+        message_sent = True
+    return render_template('index.html', message_sent=message_sent)
