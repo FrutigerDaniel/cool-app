@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Отправка сообщения в Telegram</title>
 </head>
 <body>
     <h1>Отправка сообщения в Telegram</h1>
-    <form method="post">
-        <label for="chat_id">Chat ID:</label>
-        <input type="text" id="chat_id" name="chat_id"><br><br>
-        <label for="text">Текст сообщения:</label>
-        <input type="text" id="text" name="text"><br><br>
-        <input type="submit" value="Отправить">
+    <form method="POST">
+        <input type="text" name="chat_id" placeholder="Chat ID" style="height: 50px; width: 250px;"><br>
+        <input type="text" name="text" placeholder="Текст сообщения" style="height: 50px; width: 250px;"><br>
+        <button type="submit"><img src="{{ url_for('static', filename='image.jpg') }}" alt="Изображение"></button>
     </form>
+    {% if message_sent %}
+        <p>Сообщение отправлено!</p>
+        
+    {% endif %}
 </body>
 </html>
